@@ -16,7 +16,7 @@ react 소스들이 들어갈 곳. react로 작업할 경우 99%의 파일이 이
 - logo.svg : 콤포넌트 안에서 사용되는 svg 파일. 아마도 디폴트는 리액트 로고였을 걸...
 - index.js : react 로 작성할 때 시작점이 되는 파일. 여러가지 import들이 본격적으로 이루어지는 것을 볼 수 있다. 참고로 <React.StrictMode> ~ </React.StrictMode> 추가적인 에러체크를 해주는 기능이므로 사용하는 것이 좋다.
  
-### [ for Advanced User ]
+### for Advanced User
 * 아직 한국 개발현장에서 쓰이는 걸 본적이 없는 파일들.
 - App.test.js : 작성할 콤포넌트를 테스트하는 파일. 이게 바로 단위테스트를 개발자가 해야 한다는 이유지.
 - setupTest.js : 위의 테스트파일을 테스트하는 파일(장난해? ㅡ.ㅡ;)
