@@ -4,33 +4,43 @@ import { useState } from 'react'
 // Manage React States
 
 function App() {
-
-  const [name, setName] = useState('Genie')
   const [events, setEvents] = useState([
     { title: 'First event', id: 1 },
     { title: 'Secend event', id: 2 },
     { title: 'Third event', id: 3 }
   ])
-  // 배열안에 들어가는 값은 {}로 감싼다. NOT ()
 
-  const handleClick = () => {
-    setName('Nyao!')
-    console.log(name)
-  }
-  // 진짜... 미치겠네...ㅠㅜ 함수의 { }은 잘 챙겨주자...
+  const handleClick = (id) => {
+    setEvents(events.filter(id) => {
+    return id !== events.id
+  })
+  console.log(id)
+}
+// setState는 리액트님께 state가 이렇게 변경되었음을 보고하는 것. 보고하지 않으면 화면렌더 안해준다.
 
-  return (
-    <div className="App">
-      <h1>My name is {name}</h1>
-      <button onClick={handleClick}>Change name</button>
+return (
+  <div className="App">
 
-      {events.map((event, index) => (
-        <div key={event.id}>
-          <h2>{index} - {event.title}</h2>
-        </div>
-      ))}
-    </div>
-  );
+    {events.map((event, index) => (
+      <div key={event.id}>
+        <h2>{index} - {event.title}</h2>
+        {/* 1. 클릭될 때 handleClick 함수를 발동시켜라. */}
+        {/* <button onClick={handleClick}>Delete event</button> */}
+
+        {/* 2. 화면 최초 렌더링시 바로 handleClick 발동됨 */}
+        {/* <button onClick={handleClick()}>Delete</button> */}
+
+        {/* 3. 화면 최초 렌더링시 클릭할 때 뭘 해야할지를 기억하고 있어라. = 즉, 실제로 클릭될 때까지는 아무짓도 안함. 그냥 알고만 있는 상태 */}
+        {/* <button onClick={() => { handleClick() }}>Delete</button> */}
+
+        {/* 4. 이걸 간단하게 정리하면, 즉 실무에서 많이 쓰이는 것은... 한줄짜리 간단한 코드에서는 {}를 뺀다.*/}
+        {/* 여기에 나중에 조작이 쉽도록, 해당 아이템의 key를 기억해둘 수 있도록하면, 화면 렌더링시에 각 클릭버튼은 자기가 담당하고 있는 아이템의 key 값을 기억하고 있는 상태가 된다. */}
+        <button onClick={() => handleClick(event.id)}>Delete</button>
+
+      </div>
+    ))}
+  </div>
+);
 }
 // key는 처리 대상이 되는 element의 template 마다 붙여야 한다. 나중에 지우거나 할 때 h2만 지우고 div를 남겨둘 생각이 아니라면.
 // 생각해보면, index는 events 그 자체에 포함된 뭔가가 아니다. 배열에 소속되면서 붙게 된 속성.
