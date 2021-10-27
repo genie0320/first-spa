@@ -7,6 +7,8 @@
 
 # filter
 
+# destructuring 
+
 # VScode 꿀팁
 0. setting으로 바로가기 ctrl + , 검색창에 아래의 키값을 입력하면 쉽게 수정할 수 있다.
 1. 저장할 때마다 코드를 이쁘게 정리하기 

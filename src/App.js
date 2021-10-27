@@ -23,9 +23,16 @@ function App() {
     console.log(id)
   }
 
+  const subTitleTest = "Course can use like this"
   return (
     <div className="App">
-      <Title />
+      {/* 작성한 components는 이렇게 불러다 박아 넣을 수 있다. */}
+      {/* <Title /> */}
+
+      {/* 이렇게 포탈처럼... 프로퍼티를 넘길 수도 있다. */}
+      <Title title="This is from App" subtitle="Like time machine" />
+      <Title title="Can use multiple times" subtitle={subTitleTest} />
+
       <div>
         {!showEvents && (
           <button onClick={() => setShowEvents(true)}>Show Event</button>
