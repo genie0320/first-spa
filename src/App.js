@@ -2,8 +2,14 @@ import './App.css';
 import { useState } from 'react'
 
 // Manage React States
+// boolean state
 
 function App() {
+  // useState, 즉 hooks 는 오직 콤포넌트의 최상단에서만 선언할 수 있다.
+  // 하단의 함수 내에서 사용할 수 없고,
+  // 콤퍼넌트 밖에서도 사용할 수 없다.
+
+  const [showEvents, setShowEvents] = useState(true)
   const [events, setEvents] = useState([
     { title: 'First event', id: 1 },
     { title: 'Secend event', id: 2 },
@@ -11,6 +17,7 @@ function App() {
   ])
 
   const handleClick = (id) => {
+
     // setEvents(() => {}
     // filter는 해당 배열의 값을 한개씩 가져와서 처리하므로, 뭘 어떻게 하길 바라는지에 대한 디테일한 주문을 할 수 있는 콜백함수로 넣어줄 수 있다.
     // 콜백(callback, call-after function) 함수는 다른 코드의 인수로서 넘겨주는 실행 가능한 코드를 말한다. 콜백을 넘겨받는 코드는 이 콜백을 필요에 따라 즉시 실행할 수도 있고, 아니면 나중에 실행할 수도 있다.
@@ -34,7 +41,18 @@ function App() {
   return (
     <div className="App">
 
-      {events.map((event, index) => (
+      <div>
+        {!showEvents && (
+          <button onClick={() => setShowEvents(true)}>Show Event</button>
+        )}
+        {showEvents && (
+          <button onClick={() => setShowEvents(false)}>Hide Event</button>
+        )}
+
+      </div>
+
+      {/* showEvents 가 true 인경우에만 다음 코드를 실행할 것. */}
+      {showEvents && events.map((event, index) => (
         <div key={event.id}>
           <h2>{index} - {event.title}</h2>
           {/* 1. 클릭될 때 handleClick 함수를 발동시켜라. */}
