@@ -1,8 +1,9 @@
 import './App.css';
-import { useState } from 'react'
+import React, { useState } from 'react'
 import Title from './components/Title'
+import reactDom from 'react-dom';
 
-// Components
+// React fragment <>
 
 function App() {
 
@@ -44,10 +45,14 @@ function App() {
       </div>
 
       {showEvents && events.map((event, index) => (
-        <div key={event.id}>
+        // 여기에는 props가 있기에... <>쓸 수 없다.
+        // <div key={event.id}>
+        <React.Fragment key={event.id}>
           <h2>{index} - {event.title}</h2>
           <button onClick={() => handleClick(event.id)}>Delete</button>
-        </div>
+          {/* </div> */}
+        </React.Fragment>
+        // 이렇게 처리하면... 사실 코딩할 때는 더 길어지지만, html을 이쁘게 유지할 수 있다.
       ))}
     </div>
   );
