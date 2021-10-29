@@ -4,6 +4,10 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// React styling
+// *.css의 갯수마다 각각의 <style></style> 태그가 생성된다. 
+// = 작은 코드단위로 유지되긴 하지만, import 순서, 서로간의 중복관계 등에 그대로 노출된다. = 광역 scope
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
