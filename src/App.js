@@ -2,6 +2,7 @@ import './App.css';
 import React, { useState } from 'react'
 import Title from './components/Title'
 import Modal from './components/Modal'
+import EventList from './components/EventList'
 
 // Challenge 1. Make Evnet list 
 // - There should be no event items related code in this file.
@@ -10,7 +11,7 @@ import Modal from './components/Modal'
 
 function App() {
 
-  const [showModal, setShowModal] = useState(false)
+  // const [showModal, setShowModal] = useState(false)
 
   const [showEvents, setShowEvents] = useState(true)
   const [events, setEvents] = useState([
@@ -19,9 +20,9 @@ function App() {
     { title: 'Third event', id: 3 }
   ])
 
-  const handleClose = () => {
-    setShowModal(false)
-  }
+  // const handleClose = () => {
+  //   setShowModal(false)
+  // }
 
   const handleClick = (id) => {
     setEvents((prevEvents) => {
@@ -33,10 +34,11 @@ function App() {
   }
 
   const subTitleTest = "Course can use like this"
+
   return (
     <div className="App">
-      <Title title="This is from App" subtitle="Like time machine" />
-      <Title title="Can use multiple times" subtitle={subTitleTest} />
+      {/* <Title title="This is from App" subtitle="Like time machine" />
+      <Title title="Can use multiple times" subtitle={subTitleTest} /> */}
 
       {!showEvents && (
         <button onClick={() => setShowEvents(true)}>Show Event</button>
@@ -45,22 +47,17 @@ function App() {
         <button onClick={() => setShowEvents(false)}>Hide Event</button>
       )}
 
-      {showEvents && events.map((event, index) => (
-        <React.Fragment key={event.id}>
-          <h2>{index} - {event.title}</h2>
-          <button onClick={() => handleClick(event.id)}>Delete</button>
-        </React.Fragment>
-      ))}
+      {showEvents && <EventList events={events} handleClick={handleClick} />}
 
-      <div>
+      {/* <div>
         <button onClick={() => setShowModal(true)}>Show Modal</button>
-      </div>
+      </div> */}
 
-      {showModal && <Modal handleClose={handleClose}>
+      {/* {showModal && <Modal handleClose={handleClose}>
         <h2>Warning</h2>
         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aspernatur veniam quae voluptates ratione qui, sequi voluptatem quia consequatur ex quidem perferendis. Dolorum sed qui id laborum veritatis ex, voluptatum minus?</p>
         <a href="#">Click</a>
-      </Modal>}
+      </Modal>} */}
     </div >
   );
 }
