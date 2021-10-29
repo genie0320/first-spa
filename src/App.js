@@ -7,6 +7,9 @@ import Modal from './components/Modal'
 
 function App() {
 
+  // 결국 handleClose 가 이루어지는 곳은 여기이므로, 이벤트관리는 여기서. modal의 state를 관리하여 닫기 관리
+  const [showModal, setShowModal] = useState(true)
+
   const [showEvents, setShowEvents] = useState(true)
   const [events, setEvents] = useState([
     { title: 'First event', id: 1 },
@@ -14,6 +17,9 @@ function App() {
     { title: 'Third event', id: 3 }
   ])
 
+  const handleClose = () => {
+    setShowModal(false)
+  }
   const handleClick = (id) => {
 
     setEvents((prevEvents) => {
@@ -56,7 +62,19 @@ function App() {
         ))
       }
 
-      <Modal />
+      <Modal>
+        {/* 이렇게 Modal 에 딸린 children 으로 전달할 수 있다. 즉 Modal의 외격만 정해놓고, 내용은 html편집과 거의 유사한 느낌으로 전달할 수 있다는 것. */}
+        <h2>Hello, evenryone!</h2>
+        <p>My name is Genie</p>
+      </Modal>
+
+      {/* modal의 showState가 true인 경우에만 모달 노출. */}
+      {showModal && <Modal>
+        <h2>Warning</h2>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aspernatur veniam quae voluptates ratione qui, sequi voluptatem quia consequatur ex quidem perferendis. Dolorum sed qui id laborum veritatis ex, voluptatum minus?</p>
+        <a href="#">Click</a>
+        <button onClick={handleClose}>Close</button>
+      </Modal>}
     </div >
   );
 }
