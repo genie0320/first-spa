@@ -8,18 +8,21 @@ import AddNew from './components/AddNew'
 function App() {
 
   const [showModal, setShowModal] = useState(false)
-
   const [showEvents, setShowEvents] = useState(true)
-  const [events, setEvents] = useState([
-    { title: 'First event', id: 1 },
-    { title: 'Secend event', id: 2 },
-    { title: 'Third event', id: 3 }
-  ])
+  const [events, setEvents] = useState([])
 
+  const addEvent = (event) => {
+    setEvents((prevEvents) => {
+      return [...prevEvents, event]
+    })
+    setShowModal(false)
+  }
   const handleClose = () => {
     setShowModal(false)
   }
-
+  const dummyClick = (e) => {
+    e.stopPropagation()
+  }
   const handleClick = (id) => {
     setEvents((prevEvents) => {
       return prevEvents.filter((event) => {
@@ -42,17 +45,23 @@ function App() {
         <button onClick={() => setShowEvents(false)}>Hide Event</button>
       )}
 
-      {showEvents && <EventList events={events} handleClick={handleClick} />}
+      {showEvents && <EventList
+        events={events}
+        handleClick={handleClick}
+      />}
 
       <div>
         <button onClick={() => setShowModal(true)}>Add new</button>
       </div>
 
-      {showModal && <Modal handleClose={handleClose} isSalesModal={true}>
+      {showModal && <Modal
+        handleClose={handleClose}
+        dummyClick={dummyClick}
+        isSalesModal={true}
+      >
         <h2>Add New Event</h2>
         <hr />
-        <AddNew />
-        <a href="#">Click</a>
+        <AddNew addEvent={addEvent} />
       </Modal>}
     </div >
   );

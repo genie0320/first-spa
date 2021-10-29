@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import style from './AddNew.css'
 
-export default function AddNew() {
+export default function AddNew({ addEvent }) {
 
     const [title, setTitle] = useState('')
     const [date, setDate] = useState('')
@@ -20,12 +20,11 @@ export default function AddNew() {
             id: Math.floor(Math.random() * 10000)
         }
 
-        console.log(event)
-
+        addEvent(event)
         resetValue()
     }
+
     return (
-        // onSubmit을 btn이 아니라 form 태그에 붙이는 것에 주의. 
         < form className="add-new-event" onSubmit={handleSubmit} >
             <label>
                 <span>Event Name</span>
