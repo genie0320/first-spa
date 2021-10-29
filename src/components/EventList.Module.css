@@ -1,0 +1,13 @@
+.card {
+    border: 1px solid #eee;
+    box-shadow: 4px 4px 5px rgba(0,0,0,0.05);
+    padding: 10px;
+    max-width: 400px;
+    margin: 20px auto;
+    border-radius: 4px;
+  }
+
+  /* 반드시 class를 지정해야 해당 scope에만 적용되며, 일반적인 element 그 자체, 즉 button 따위로 style 설정을 하면 global 하게 먹힌다. 주의! */
+.card button {
+    background-color: #555;
+  }

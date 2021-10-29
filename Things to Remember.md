@@ -12,6 +12,9 @@
 
 # destructuring 
 
+# Class component v. function component.
+
+
 # VScode 꿀팁
 0. setting으로 바로가기 ctrl + , 검색창에 아래의 키값을 입력하면 쉽게 수정할 수 있다.
 1. 저장할 때마다 코드를 이쁘게 정리하기 
@@ -21,3 +24,11 @@ emmet.includeLanguages => "javascript": "javascriptreact" 추가.
 3. 간략한 형태의 리액트 콤포넌트 템플릿 단축키
 rfc+Tab은 full 버전. 즉 지금은 필요치 않은 React import까지 하고,
 _rfc+Tab은 심플버전의 템플릿을 제공한다.
+4. Code 자동줄바꿈하기
+나처럼 주석을 주렁주렁 달 경우에... 유용하다.
+    "editor.rulers": [
+        80,
+        120
+    ],
+    "editor.wordWrap": "bounded",
+    "editor.wordWrapColumn": 120
