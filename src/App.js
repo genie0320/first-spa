@@ -18,7 +18,8 @@ function App() {
   ])
 
   const handleClose = () => {
-    setShowModal(!showModal)
+    setShowModal(false)
+    // 이건 오리지날 그대로 유지.
   }
 
   const handleClick = (id) => {
@@ -53,7 +54,8 @@ function App() {
       }
 
       <div>
-        <button onClick={handleClose}>Show Modal</button>
+        {/* 이렇게 바로 fire 을 해줄수도 있다. 이게 훨 깔끔한데. */}
+        <button onClick={() => setShowModal(true)}>Show Modal</button>
       </div>
 
       {showModal && <Modal handleClose={handleClose}>
