@@ -3,8 +3,9 @@ import React, { useState } from 'react'
 import Title from './components/Title'
 import Modal from './components/Modal'
 
-// React Props 
-// Challenge. 로딩시 모달 미노출, 버튼 클릭시 모달노출.
+// React Portal
+// Modal을 DOM tree구조에 종속되지 않게 렌더링하여, 불필요한 성능저하를 막기 위함. (특히 애니메이션을 넣을 때...)
+
 
 function App() {
 
@@ -19,7 +20,6 @@ function App() {
 
   const handleClose = () => {
     setShowModal(false)
-    // 이건 오리지날 그대로 유지.
   }
 
   const handleClick = (id) => {
@@ -44,17 +44,14 @@ function App() {
         <button onClick={() => setShowEvents(false)}>Hide Event</button>
       )}
 
-      {
-        showEvents && events.map((event, index) => (
-          <React.Fragment key={event.id}>
-            <h2>{index} - {event.title}</h2>
-            <button onClick={() => handleClick(event.id)}>Delete</button>
-          </React.Fragment>
-        ))
-      }
+      {showEvents && events.map((event, index) => (
+        <React.Fragment key={event.id}>
+          <h2>{index} - {event.title}</h2>
+          <button onClick={() => handleClick(event.id)}>Delete</button>
+        </React.Fragment>
+      ))}
 
       <div>
-        {/* 이렇게 바로 fire 을 해줄수도 있다. 이게 훨 깔끔한데. */}
         <button onClick={() => setShowModal(true)}>Show Modal</button>
       </div>
 
