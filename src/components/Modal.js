@@ -18,6 +18,7 @@ export default function Modal({ children, handleClose }) {
             <div className="modal">
                 {children}
                 <button onClick={handleClose}>Close</button>
+                {/* 여기에 btn을 넣을 경우, 모든 모달에는 닫기버튼이 들어가지만(템플릿이니까) prop으로 handleClose를 넘겨주지 않으면, 바보버튼이 된다. 주의 */}
             </div>
         </div>
     )
