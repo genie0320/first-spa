@@ -3,6 +3,7 @@ import { useState } from 'react'
 import Title from './components/Title'
 import Modal from './components/Modal'
 import EventList from './components/EventList'
+import AddNew from './components/AddNew'
 
 function App() {
 
@@ -44,13 +45,13 @@ function App() {
       {showEvents && <EventList events={events} handleClick={handleClick} />}
 
       <div>
-        <button onClick={() => setShowModal(true)}>Show Modal</button>
+        <button onClick={() => setShowModal(true)}>Add new</button>
       </div>
 
       {showModal && <Modal handleClose={handleClose} isSalesModal={true}>
-        <h2>Warning</h2>
+        <h2>Add New Event</h2>
         <hr />
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aspernatur veniam quae voluptates ratione qui, sequi voluptatem quia consequatur ex quidem perferendis. Dolorum sed qui id laborum veritatis ex, voluptatum minus?</p>
+        <AddNew />
         <a href="#">Click</a>
       </Modal>}
     </div >
