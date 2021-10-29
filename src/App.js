@@ -3,8 +3,9 @@ import React, { useState } from 'react'
 import Title from './components/Title'
 import Modal from './components/Modal'
 
-// React Portal
-// Modal을 DOM tree구조에 종속되지 않게 렌더링하여, 불필요한 성능저하를 막기 위함. (특히 애니메이션을 넣을 때...)
+// Challenge 1. Make Evnet list 
+// - There should be no event items related code in this file.
+// - Every event item function should be preserved.
 
 
 function App() {
