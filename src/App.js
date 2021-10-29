@@ -68,12 +68,11 @@ function App() {
         <p>My name is Genie</p>
       </Modal>
 
-      {/* modal의 showState가 true인 경우에만 모달 노출. */}
-      {showModal && <Modal>
+      {/* prop으로 넘겨줄 수 있는 것은 함수 그 자체도 가능하다.  */}
+      {showModal && <Modal handleClose={handleClose}>
         <h2>Warning</h2>
         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aspernatur veniam quae voluptates ratione qui, sequi voluptatem quia consequatur ex quidem perferendis. Dolorum sed qui id laborum veritatis ex, voluptatum minus?</p>
         <a href="#">Click</a>
-        <button onClick={handleClose}>Close</button>
       </Modal>}
     </div >
   );
