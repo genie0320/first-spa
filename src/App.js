@@ -1,7 +1,7 @@
 import './App.css';
 import React, { useState } from 'react'
 import Title from './components/Title'
-import reactDom from 'react-dom';
+import Modal from './components/Modal'
 
 // React fragment <>
 
@@ -34,27 +34,30 @@ function App() {
       <Title title="This is from App" subtitle="Like time machine" />
       <Title title="Can use multiple times" subtitle={subTitleTest} />
 
-      <div>
-        {!showEvents && (
-          <button onClick={() => setShowEvents(true)}>Show Event</button>
-        )}
-        {showEvents && (
-          <button onClick={() => setShowEvents(false)}>Hide Event</button>
-        )}
 
-      </div>
+      {!showEvents && (
+        <button onClick={() => setShowEvents(true)}>Show Event</button>
+      )}
+      {showEvents && (
+        <button onClick={() => setShowEvents(false)}>Hide Event</button>
+      )}
 
-      {showEvents && events.map((event, index) => (
-        // 여기에는 props가 있기에... <>쓸 수 없다.
-        // <div key={event.id}>
-        <React.Fragment key={event.id}>
-          <h2>{index} - {event.title}</h2>
-          <button onClick={() => handleClick(event.id)}>Delete</button>
-          {/* </div> */}
-        </React.Fragment>
-        // 이렇게 처리하면... 사실 코딩할 때는 더 길어지지만, html을 이쁘게 유지할 수 있다.
-      ))}
-    </div>
+
+      {
+        showEvents && events.map((event, index) => (
+          // 여기에는 props가 있기에... <>쓸 수 없다.
+          // <div key={event.id}>
+          <React.Fragment key={event.id}>
+            <h2>{index} - {event.title}</h2>
+            <button onClick={() => handleClick(event.id)}>Delete</button>
+            {/* </div> */}
+          </React.Fragment>
+          // 이렇게 처리하면... 사실 코딩할 때는 더 길어지지만, html을 이쁘게 유지할 수 있다.
+        ))
+      }
+
+      <Modal />
+    </div >
   );
 }
 export default App;
