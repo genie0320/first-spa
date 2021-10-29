@@ -10,8 +10,23 @@ export default function AddNew() {
         setTitle('')
         setDate('')
     }
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+
+        const event = {
+            title: title,
+            date: date,
+            id: Math.floor(Math.random() * 10000)
+        }
+
+        console.log(event)
+
+        resetValue()
+    }
     return (
-        < form className="add-new-event" >
+        // onSubmit을 btn이 아니라 form 태그에 붙이는 것에 주의. 
+        < form className="add-new-event" onSubmit={handleSubmit} >
             <label>
                 <span>Event Name</span>
                 <input
@@ -28,8 +43,7 @@ export default function AddNew() {
                     value={date}
                 />
             </label>
-            <p>Title - {title}, Date - {date} </p>
-            <p onClick={resetValue}>Reset All</p>
+            <button>Submit</button>
         </form >
     )
 }
