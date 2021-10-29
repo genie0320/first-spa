@@ -1,11 +1,15 @@
-export default function EventList(events, handleClick) {
+import React from "react"
+
+export default function EventList({ events, handleClick }) {
     return (
-        events.map(({ title, id }, index) => {
-            <div key={id}>
-                <h2>{index} - {title}</h2>
-                <button onClick={() => handleClick(id)}>Delete</button>
-            </div>
-        }
-        )
+        <div>
+            {/* 아래에서 events.map( ()=>()) 임에 주의. ()=>{}가 아님. */}
+            {events.map((event, index) => (
+                <React.Fragment key={event.id}>
+                    <h2>{index} - {event.title}</h2>
+                    <button onClick={() => handleClick(event.id)}>Delete</button>
+                </React.Fragment>
+            ))}
+        </div>
     )
 }
