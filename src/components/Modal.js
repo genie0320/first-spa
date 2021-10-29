@@ -14,7 +14,11 @@ export default function Modal({ children, handleClose, isSalesModal }) {
                 textAlign: "center"
             }}>
                 {children}
-                <button onClick={handleClose}>Close</button>
+                {/* inline style을 주는 방법 2 : 이렇게 props를 넘겨줄 때, 조건을 걸 수도 있다. */}
+                <button
+                    className={isSalesModal ? "isSales" : ""}
+                    onClick={handleClose}
+                >Close</button>
             </div>
         </div >
     ), document.body)

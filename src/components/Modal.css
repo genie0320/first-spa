@@ -13,3 +13,7 @@
     background-color: #fff;
     border-radius: 10px;
 }
+.isSales {
+    font-size: 20px;
+    background-color: green;
+}
