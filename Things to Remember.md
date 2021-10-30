@@ -12,6 +12,15 @@
 
 # destructuring 
 
+# Spread
+
+# event.stopPropagation(), event.preventDefault () 이해하기
+https://ismydream.tistory.com/98
+e.stopPropagation 은 나에게 어떤 변화가 일어났는지를 남에게 알리지 않도록, 내 선에서 끝내는 것.> Bubble Up 방지.
+e.preventDefault 는 가령 a href 등에서 클릭시 링크이동을 하고, 화면을 새로고치는 것이 Default 인데, 클릭을 당했어도 그 Dafault 행동을 하지 못하게 만드는 것이.. 즉 눌러도 눌렀는지 모르게 만드는 것,
+즉 onClick 이라는 이벤트의 정수만을 쏙 빼먹고, 그에 따르는 결과, 즉 default action은 피하려는 꼼수.
+
+
 # Class component v. function component.
 
 

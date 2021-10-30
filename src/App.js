@@ -1,5 +1,5 @@
 import './App.css';
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import Title from './components/Title'
 import Modal from './components/Modal'
 import EventList from './components/EventList'
@@ -20,6 +20,7 @@ function App() {
   const handleClose = () => {
     setShowModal(false)
   }
+  /* 끼유우우우우~ 해당 영역을 클릭했다는 것을 남이 모르게 하라!! 확산방지~ */
   const dummyClick = (e) => {
     e.stopPropagation()
   }
