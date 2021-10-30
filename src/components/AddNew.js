@@ -5,10 +5,12 @@ export default function AddNew({ addEvent }) {
 
     const [title, setTitle] = useState('')
     const [date, setDate] = useState('')
+    const [location, setLocation] = useState('Seoul')
 
-    const resetValue = () => {
+    function resetValue() {
         setTitle('')
         setDate('')
+        setLocation('Seoul')
     }
 
     const handleSubmit = (e) => {
@@ -17,6 +19,7 @@ export default function AddNew({ addEvent }) {
         const event = {
             title: title,
             date: date,
+            location: location,
             id: Math.floor(Math.random() * 10000)
         }
 
@@ -41,6 +44,14 @@ export default function AddNew({ addEvent }) {
                     onChange={(e) => setDate(e.target.value)}
                     value={date}
                 />
+            </label>
+            <label>
+                <span>Location</span>
+                <select onChange={(e) => { setLocation(e.target.value) }}>
+                    <option value="Seoul">Seoul</option>
+                    <option value="Busan">Busan</option>
+                    <option value="Jeju">Jeju</option>
+                </select>
             </label>
             <button>Submit</button>
         </form >
